@@ -1,0 +1,68 @@
+-- 1
+select * from trains;
+
+-- 2
+select * from stations;
+
+-- 3
+select departure_city, arrival_city, departure_time, distance, price
+from schedules 
+where trip_code = 2001;
+
+-- 4
+select * from travelers;
+
+-- 5
+select * from tickets 
+where ticket_date = to_date('12/MAR/2024','dd/mon/yyyy');
+
+
+-- 6
+select t.* from tickets t 
+inner join travelers tr on t.client_number = tr.traveler_id 
+where tr.name = 'Ali Hassan';
+
+-- 7
+select s.departure_city, s.arrival_city, s.departure_time, s.distance, s.price 
+from schedules s 
+where trunc(s.departure_time) = to_timestamp('15/MAR/2024','dd/mon/yyyy');
+
+-- 8
+select s.trip_code, t.max_seats 
+from schedules s 
+inner join trains t on s.train_id = t.train_number;
+
+-- 9
+select trip_code, departure_city, arrival_city 
+from schedules;
+
+-- 10
+select sum(price) 
+from schedules 
+where trunc(departure_time) > to_date('15/MAR/2024','dd/mon/yyyy') 
+and trunc(departure_time) < to_date('18/MAR/2024','dd/mon/yyyy');
+
+-- 11
+select avg(train_speed) 
+from trains;
+
+-- 12
+select stats_mode(departure_city), stats_mode(arrival_city) 
+from schedules;
+
+-- 13
+select * 
+from schedules 
+order by departure_time;
+
+-- 14
+select t.train_number, sum(s.distance) 
+from trains t 
+inner join schedules s on t.train_number = s.train_id 
+group by t.train_number;
+
+-- 15
+select s.trip_code, count(*) 
+from schedules s 
+inner join tickets t on s.trip_code = t.trip_number 
+group by s.trip_code;

@@ -1,0 +1,40 @@
+{
+ "Mohammed": {
+  "1": {
+   "id": "1",
+   "amount": 15.0,
+   "category": "Food",
+   "date": "2020-01-01"
+  },
+  "2": {
+   "id": "2",
+   "amount": 200.0,
+   "category": "Salary",
+   "date": "2021-05-01"
+  },
+  "3": {
+   "id": "3",
+   "amount": 200.0,
+   "category": "Transportation",
+   "date": "2019-02-01"
+  },
+  "4": {
+   "id": "4",
+   "amount": 10.0,
+   "category": "Food",
+   "date": "2018-05-05"
+  },
+  "5": {
+   "id": "5",
+   "amount": 50.0,
+   "category": "Food",
+   "date": "2024-02-02"
+  },
+  "7": {
+   "id": "7",
+   "amount": 4.0,
+   "category": "Food",
+   "date": "2024-03-20"
+  }
+ }
+}

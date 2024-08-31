@@ -1,0 +1,71 @@
+drop table tickets cascade constraints;
+drop table travelers cascade constraints;
+drop table schedules cascade constraints;
+drop table trains cascade constraints;
+drop table stations cascade constraints;
+
+
+create table trains(
+    train_number number,
+    train_speed number,
+    max_seats number,
+    constraint pk_trains primary key (train_number)
+);
+
+create table stations(
+    station_code number,
+    station_name varchar2(50),
+    constraint pk_stations primary key (station_code)
+);
+
+create table schedules(
+    trip_code number,
+    train_id number,
+    departure_city varchar2(50),
+    arrival_city varchar2(50),
+    departure_time timestamp,
+    distance float,
+    price float,
+    constraint pk_trips primary key (trip_code),
+    constraint fk_trips_train_id foreign key (train_id) 
+      references trains (train_number) 
+);
+
+create table travelers(
+    traveler_id number,
+    name varchar2(20),
+    phone_number varchar2(20),
+    age number,
+    constraint pk_travelers primary key (traveler_id)
+);
+
+create table tickets(
+    trip_number number,
+    client_number number,
+    ticket_date date,
+    constraint pk_tickets primary key (trip_number, client_number),
+    constraint fk_tickets_trip_number foreign key (trip_number) 
+      references schedules (trip_code),
+    constraint fk_tickets_client_number foreign key (client_number) 
+      references travelers (traveler_id) 
+);
+
+insert into trains (train_number, train_speed, max_seats) values (1001, 120, 500);
+insert into trains (train_number, train_speed, max_seats) values (1002, 160, 350);
+insert into trains (train_number, train_speed, max_seats) values (1003, 100, 200);
+
+insert into stations (station_code, station_name) values (101, 'Riyadh Central Station');
+insert into stations (station_code, station_name) values (102, 'Jeddah Station');
+insert into stations (station_code, station_name) values (103, 'Dammam Station');
+
+insert into schedules (trip_code, train_id, departure_city, arrival_city, departure_time, distance, price) values (2001, 1001, 'Riyadh', 'Jeddah', TO_TIMESTAMP('2024-03-15 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), 900, 250.00);
+insert into schedules (trip_code, train_id, departure_city, arrival_city, departure_time, distance, price) values (2002, 1002, 'Jeddah', 'Dammam', TO_TIMESTAMP('2024-03-16 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), 600, 180.00);
+insert into schedules (trip_code, train_id, departure_city, arrival_city, departure_time, distance, price) values (2003, 1003, 'Dammam', 'Riyadh', TO_TIMESTAMP('2024-03-17 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), 900, 250.00);
+
+insert into travelers (traveler_id, name, phone_number, age) values (3001, 'Ali Hassan', '+966551234567', 35);
+insert into travelers (traveler_id, name, phone_number, age) values (3002, 'Fatima Ahmed', '+966519876543', 28);
+insert into travelers (traveler_id, name, phone_number, age) values (3003, 'Omar Mohammed', '+966501239876', 42);
+
+insert into tickets (trip_number, client_number, ticket_date) values (2001, 3001, TO_DATE('2024-03-13', 'YYYY-MM-DD'));
+insert into tickets (trip_number, client_number, ticket_date) values (2002, 3002, TO_DATE('2024-03-14', 'YYYY-MM-DD'));
+insert into tickets (trip_number, client_number, ticket_date) values (2001, 3003, TO_DATE('2024-03-12', 'YYYY-MM-DD'));

@@ -1,0 +1,15 @@
+names:
+- Ball
+- Player
+- Ref
+nc: 3
+roboflow:
+  license: CC BY 4.0
+  project: soccer-players-ckbru
+  url: https://universe.roboflow.com/roboflow-universe-projects/soccer-players-ckbru/dataset/16
+  version: 16
+  workspace: roboflow-universe-projects
+path: Soccer-Players-16
+test: ../test/images
+train: ../train/images
+val: ../valid/images

@@ -1,0 +1,12 @@
+Before SMOTE,LogisticRegression,0.5321100917431193
+Before SMOTE,DecisionTreeClassifier,0.5067698259187621
+Before SMOTE,RandomForestClassifier,0.5938242280285035
+Before SMOTE,GradientBoostingClassifier,0.6359649122807017
+Before SMOTE,AdaBoostClassifier,0.5789473684210527
+Before SMOTE,XGBClassifier,0.579520697167756
+After SMOTE,LogisticRegression,0.7856868026163909
+After SMOTE,DecisionTreeClassifier,0.8929351784413693
+After SMOTE,RandomForestClassifier,0.9383536360280547
+After SMOTE,GradientBoostingClassifier,0.9197349042709867
+After SMOTE,AdaBoostClassifier,0.9043026706231454
+After SMOTE,XGBClassifier,0.9303703703703704
